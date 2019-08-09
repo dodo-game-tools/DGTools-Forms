@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: c2a3fb1c06e25d64295a73d5e8f98e5a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - intField: {fileID: -3305538672605676964, guid: c12c6a2bf49604b40ae1121fb3dc6ab9,
+      type: 3}
+  - stringField: {fileID: 6374793841175914261, guid: 91ef10439b07b6745a89943ec08b7e13,
+      type: 3}
+  - floatField: {fileID: 8247275564699193293, guid: eb0d6a988339b80489dbd2a982db9f05,
+      type: 3}
+  - boolField: {fileID: 7296942874499595417, guid: 1b68168f3c5233a42a008938f05c8b4a,
+      type: 3}
+  executionOrder: 0
+  icon: {fileID: 2800000, guid: 3abb2ce69dabe4b4781a42012ef4abe2, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

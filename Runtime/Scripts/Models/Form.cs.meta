@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 7b874694677b6de4ebbffb8151367473
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - theme: {fileID: 11400000, guid: d28c6965b0ccb834493dab52924de2b1, type: 2}
+  - validateButton: {instanceID: 0}
+  - cancelButton: {instanceID: 0}
+  - title: {instanceID: 0}
+  - description: {instanceID: 0}
+  - fieldsContainer: {instanceID: 0}
+  - _item: {instanceID: 0}
+  - resetButton: {instanceID: 0}
+  executionOrder: 0
+  icon: {fileID: 2800000, guid: e1244fa5817ef1042bdeede1c00d9f32, type: 3}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

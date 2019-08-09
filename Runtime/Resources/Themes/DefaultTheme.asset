@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2a3fb1c06e25d64295a73d5e8f98e5a, type: 3}
+  m_Name: DefaultTheme
+  m_EditorClassIdentifier: 
+  intField: {fileID: -3305538672605676964, guid: c12c6a2bf49604b40ae1121fb3dc6ab9,
+    type: 3}
+  stringField: {fileID: 6374793841175914261, guid: 91ef10439b07b6745a89943ec08b7e13,
+    type: 3}
+  floatField: {fileID: 8247275564699193293, guid: eb0d6a988339b80489dbd2a982db9f05,
+    type: 3}
+  boolField: {fileID: 7296942874499595417, guid: 1b68168f3c5233a42a008938f05c8b4a,
+    type: 3}
+  customFields:
+  - {fileID: 0}

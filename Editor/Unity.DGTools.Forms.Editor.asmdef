@@ -1,0 +1,17 @@
+{
+    "name": "Unity.DGTools.Forms.Editor",
+    "references": [
+        "Unity.DGTools.Core",
+        "Unity.DGTools.Core.Editor"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

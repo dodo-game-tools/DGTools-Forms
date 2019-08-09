@@ -1,0 +1,11 @@
+{
+  "name": "com.dgtools.forms",
+  "displayName": "DGTools Forms",
+  "version": "0.0.1",
+  "dependencies": {
+    "com.dgtools.core": "0.1.0"
+  },
+  "description": "Automatically generated forms for Unity",
+  "type": "tool",
+  "hideInEditor": false
+}
