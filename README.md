@@ -28,6 +28,7 @@ public class MyItem : IFormBindable {
 ### 2 - Add FormField attributes
 
 To know which fields the form should use and how, you should add some FormField attributes your fields.
+
 The attribute should match your field type. You can add constraints to your field from the attribute.
 
 ```
@@ -57,7 +58,9 @@ public class MyItem : IFormBindable {
 ### 3 - Create a form in your scene
 
 You can create it from raw or create it from the **Create/UI/DGTools/BaseForm** Menu.
+
 You will need a FormTheme, you can create it from your assets (right click + **"DGTools/Forms/Theme"**) or use the one provided by default.
+
 The FormTheme makes the link beetween the FormFieldAttributes and your FormField prefabs
 
 ### 4 - Put the item in your Form
@@ -97,11 +100,16 @@ form.CreateItem<MyItem>();                      // This will create a new MyItem
 #### Option 1 : Cutomize only graphics
 
 You can create your own fields prefabs, you just have to validate these constraints :
-**1)** The root of the prefab should have a script that inherit from **FormField** attached to it	
+
+**1)** The root of the prefab should have a script that inherit from **FormField** attached to it
+
 **2)** At least all the parameters that are not in the **"Optional Links"** section should be provided
 
+
 Now, to use this prefab you have to add this to a **FormTheme** (you can create a new one from the create menu : right click in the assets + **"DGTools/Forms/Theme"**)
+
 If your field inherits from basic fields, you can put it in the **"Base Fields"** section (ex : StringField goes in String Field... Yep, that was tricky...)
+
 Custom fields are for... Custom fields! (= next section) For the example, by default TextField is in custom fields because it inherits from a base field (StringField), but it is **NOT** a base field (TextField) 
 
 #### Option 2 : Create custom fields
@@ -111,7 +119,7 @@ If you need more complex fields for your game, you'll have to create your own fi
 **1) Create your custom attribute**. The attribute, like I said earlier, contains the constraints, their checks and will be use to call the field from your item. You can follow this template : 
 
 ```
-	[AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
     public class MyCustomFieldAttribute : FormFieldAttribute
     {
 	/*
@@ -122,10 +130,10 @@ If you need more complex fields for your game, you'll have to create your own fi
 	*
 	*/
 
-		// Override this and put the type of the FormField in it
+	// Override this and put the type of the FormField in it
         public override Type formFieldType => typeof(MyCustomField);
 
-		// This method will be used to check the constraints 
+	// This method will be used to check the constraints 
         protected override bool CheckConstraint(object value, out string error)
         {
 	    /*
@@ -147,6 +155,8 @@ If you need more complex fields for your game, you'll have to create your own fi
     }
 ```
 	
+	
+		
 **2) Create your custom field**. Like the attribute, you'll have to override FormField or a child of it. Follow this template : 
 
 ```
@@ -184,6 +194,8 @@ If you need more complex fields for your game, you'll have to create your own fi
     }
 ```
 
+
+
 **3) Add your new field to the FormTheme**. Create and add your custom field prefab in the "Custom Fields" list (see the previous section) and that's it! 
 You can now use your custom field like this : 
 
@@ -194,6 +206,7 @@ You can now use your custom field like this :
 
 	}
 ```
+
 
 See [Documentation API](https://poulpinou.github.io/DGTools-Forms/annotated.html) for more details.
 
