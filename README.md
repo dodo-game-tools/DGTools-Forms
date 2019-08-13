@@ -98,9 +98,9 @@ form.CreateItem<MyItem>();                      // This will create a new MyItem
 
 You can create your own fields prefabs, you just have to validate these constraints : 
 
-	- The root of the prefab should have a script that inherit from **FormField** attached to it
+	**1)** The root of the prefab should have a script that inherit from **FormField** attached to it
 	
-	- At least all the parameters that are not in the **"Optional Links"** section should be provided
+	**2)** At least all the parameters that are not in the **"Optional Links"** section should be provided
 
 Now, to use this prefab you have to add this to a **FormTheme** (you can create a new one from the create menu : right click in the assets + **"DGTools/Forms/Theme"**)
 If your field inherits from basic fields, you can put it in the **"Base Fields"** section (ex : StringField goes in String Field... Yep, that was tricky...)
@@ -110,7 +110,7 @@ Custom fields are for... Custom fields! (= next section) For the example, by def
 
 If you need more complex fields for your game, you'll have to create your own fields. How to do that? Follow those steps : 
 
-	- **Create your custom attribute**. The attribute, like I said earlier, contains the constraints, their checks and will be use to call the field from your item. You can follow this template : 
+	**1) Create your custom attribute**. The attribute, like I said earlier, contains the constraints, their checks and will be use to call the field from your item. You can follow this template : 
 
 	```
 	[AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
@@ -149,7 +149,7 @@ If you need more complex fields for your game, you'll have to create your own fi
     }
 	```
 
-	- **Create your custom field**. Like the attribute, you'll have to override FormField or a child of it. Follow this template : 
+	**2) Create your custom field**. Like the attribute, you'll have to override FormField or a child of it. Follow this template : 
 
 	```
 	public class MyCustomField : FormField<{my custom type}, CustomFieldAttribute>
@@ -186,7 +186,7 @@ If you need more complex fields for your game, you'll have to create your own fi
     }
 	```
 
-	- **Add your new field to the FormTheme**. Create and add your custom field prefab in the "Custom Fields" list (see the previous section) and that's it! 
+	**3) Add your new field to the FormTheme**. Create and add your custom field prefab in the "Custom Fields" list (see the previous section) and that's it! 
 	You can now use your custom field like this : 
 
 	```
