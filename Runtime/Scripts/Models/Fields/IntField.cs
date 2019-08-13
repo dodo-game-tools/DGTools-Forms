@@ -5,14 +5,16 @@ namespace DGTools.Forms
 {
     public class IntField : FormField<int, IntFieldAttribute>
     {
-        [SerializeField] InputField inputField;
+        [SerializeField] protected InputField inputField;
 
         [Header("Optional Links")]
-        [SerializeField] Button addButton;
-        [SerializeField] Button removeButton;
+        [SerializeField] protected Button addButton;
+        [SerializeField] protected Button removeButton;
 
         protected override void OnConfigure()
         {
+            inputField.contentType = InputField.ContentType.IntegerNumber;
+
             inputField.text = value.ToString();
             inputField.onValueChanged.AddListener(OnValueChanged);
 
@@ -23,7 +25,7 @@ namespace DGTools.Forms
                 removeButton.onClick.AddListener(OnRemoveButtonClick);
         }
 
-        void OnValueChanged(string text)
+        protected virtual void OnValueChanged(string text)
         {
             int last_value = value;
 
@@ -41,22 +43,17 @@ namespace DGTools.Forms
                 value = last_value;
             }
 
-            if (attribute.runtimeCheck)
-            {
-                CheckValue();
-            }
-
             inputField.text = value.ToString();
         }
 
-        void OnAddButtonClick() {
+        protected virtual void OnAddButtonClick() {
             if (value + 1 < attribute.maxValue) {
                 value++;
             }
             inputField.text = value.ToString();
         }
 
-        void OnRemoveButtonClick()
+        protected virtual void OnRemoveButtonClick()
         {
             if (value - 1 > attribute.minValue && (!attribute.positive || value > 0))
             {

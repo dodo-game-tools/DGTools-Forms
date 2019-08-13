@@ -7,12 +7,7 @@ namespace DGTools.Forms
 {
     public class BoolField : FormField<bool, BoolFieldAttribute>
     {
-        [SerializeField] Toggle toggle;       
-
-        protected override bool CastObjectToValue(object objectToCast)
-        {
-            return Convert.ToBoolean(value);
-        }
+        [SerializeField] protected Toggle toggle;
 
         protected override void OnConfigure()
         {
@@ -20,7 +15,7 @@ namespace DGTools.Forms
             toggle.onValueChanged.AddListener(OnValueChanged);
         }
 
-        void OnValueChanged(bool toggleValue) {
+        protected virtual void OnValueChanged(bool toggleValue) {
             value = toggleValue;
         }
     }

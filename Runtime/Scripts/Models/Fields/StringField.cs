@@ -5,27 +5,21 @@ namespace DGTools.Forms
 {
     public class StringField : FormField<string, StringFieldAttribute>
     {
-        [SerializeField] InputField inputField;
+        [SerializeField] protected InputField inputField;
 
         protected override void OnConfigure()
         {
             if (!string.IsNullOrEmpty(attribute.placeHolder) && inputField.placeholder != null)
                 inputField.placeholder.GetComponent<Text>().text = attribute.placeHolder;
 
+            inputField.contentType = attribute.contentType;
             inputField.text = value;
             inputField.onValueChanged.AddListener(OnValueChanged);
         }
 
-        void OnValueChanged(string text)
+        protected virtual void OnValueChanged(string text)
         {
-            string last_value = value;
-
             value = text;
-
-            if (attribute.runtimeCheck)
-            {
-                CheckValue();
-            }
 
             inputField.text = value;
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using UnityEngine.UI;
 
 namespace DGTools.Forms {
     [AttributeUsage(AttributeTargets.Field, AllowMultiple = false, Inherited = true)]
@@ -10,6 +11,7 @@ namespace DGTools.Forms {
         public int minLength = 0;
         public bool excludeDigits = false;
         public bool excludeSpecialChars = false;
+        public InputField.ContentType contentType = InputField.ContentType.Standard;
 
         public override Type formFieldType => typeof(StringField);
 

@@ -21,4 +21,4 @@ MonoBehaviour:
   boolField: {fileID: 7296942874499595417, guid: 1b68168f3c5233a42a008938f05c8b4a,
     type: 3}
   customFields:
-  - {fileID: 0}
+  - {fileID: 608964674286079359, guid: 3c3f1ec97f7b1154680273efda3117ab, type: 3}

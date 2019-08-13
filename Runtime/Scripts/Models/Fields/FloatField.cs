@@ -1,19 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Globalization;
+﻿using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace DGTools.Forms {
     public class FloatField : FormField<float, FloatFieldAttribute>
     {
-        [SerializeField] InputField inputField;
+        [SerializeField] protected InputField inputField;
 
         [Header("Optional Links")]
         [SerializeField] Slider slider;
         
         protected override void OnConfigure()
         {
+            inputField.contentType = InputField.ContentType.DecimalNumber;
             inputField.text = value.ToString("n" + attribute.decimals, CultureInfo.InvariantCulture);
             inputField.onValueChanged.AddListener(OnValueChanged);
 
@@ -34,13 +33,13 @@ namespace DGTools.Forms {
             }
         }
 
-        void OnSliderValueChanged(float sliderValue) {
+        protected virtual void OnSliderValueChanged(float sliderValue) {
             
             value = sliderValue;
             inputField.text = value.ToString("n" + attribute.decimals, CultureInfo.InvariantCulture);
         }
 
-        void OnValueChanged(string text)
+        protected virtual void OnValueChanged(string text)
         {
             float last_value = value;
 
@@ -59,11 +58,6 @@ namespace DGTools.Forms {
             catch
             {
                 value = last_value;
-            }
-
-            if (attribute.runtimeCheck)
-            {
-                CheckValue();
             }
 
             inputField.text = value.ToString("n"+attribute.decimals, CultureInfo.InvariantCulture);

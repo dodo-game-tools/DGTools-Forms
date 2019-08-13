@@ -10,7 +10,7 @@ namespace DGTools.Forms
     [CreateAssetMenu(menuName = "DGTools/Forms/Theme")]
     public class FormTheme : ScriptableObject
     {
-        [Header("Default Fields")]
+        [Header("Base Fields")]
         [SerializeField] IntField intField;
         [SerializeField] StringField stringField;
         [SerializeField] FloatField floatField;
@@ -26,13 +26,15 @@ namespace DGTools.Forms
         public FormField GetFieldFromAttribute(FormFieldAttribute attribute)
         {
             if (attribute.formFieldType == typeof(IntField)) return intField;
-            else if(attribute.formFieldType == typeof(StringField)) return stringField;
-            else if(attribute.formFieldType == typeof(FloatField)) return floatField;
-            else if(attribute.formFieldType == typeof(BoolField)) return boolField;
+            else if (attribute.formFieldType == typeof(StringField)) return stringField;
+            else if (attribute.formFieldType == typeof(FloatField)) return floatField;
+            else if (attribute.formFieldType == typeof(BoolField)) return boolField;
 
             else
                 foreach (FormField field in customFields)
+                {
                     if (field.GetType() == attribute.formFieldType) return field;
+                }
 
 
             throw new Exception(string.Format("No {0} field (from attribute {1}) found in {2} Theme", attribute.formFieldType, attribute.GetType(), name));

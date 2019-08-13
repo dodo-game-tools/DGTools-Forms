@@ -205,14 +205,54 @@ namespace DGTools.Forms {
 
 #if UNITY_EDITOR
         #region Editor Methods
-        [MenuItem("GameObject/UI/DGTools/Form", false, 10)]
-        static void CreateCustomGameObject(MenuCommand menuCommand)
+        [MenuItem("GameObject/UI/DGTools/Forms/Base Form", false, 10)]
+        static void CreateBaseForm(MenuCommand menuCommand)
         {
-            Form form = Instantiate(Resources.Load<Form>("Prefabs/default_Form"));
-            form.name = "Form";
-            GameObjectUtility.SetParentAndAlign(form.gameObject, menuCommand.context as GameObject);
-            Undo.RegisterCreatedObjectUndo(form.gameObject, "Create " + form.name);
-            Selection.activeObject = form;
+            CreateBaseAsset<Form>(menuCommand, "Prefabs/default_Form", "Form");
+        }
+
+        [MenuItem("GameObject/UI/DGTools/Forms/Base Int Field", false, 10)]
+        static void CreateBaseIntField(MenuCommand menuCommand)
+        {
+            CreateBaseAsset<IntField>(menuCommand, "Prefabs/default_IntField", "IntField");
+        }
+
+        [MenuItem("GameObject/UI/DGTools/Forms/Base Float Field", false, 10)]
+        static void CreateBaseFloatField(MenuCommand menuCommand)
+        {
+            CreateBaseAsset<FloatField>(menuCommand, "Prefabs/default_FloatField", "FloatField");
+        }
+
+        [MenuItem("GameObject/UI/DGTools/Forms/Base Bool Field", false, 10)]
+        static void CreateBaseBoolField(MenuCommand menuCommand)
+        {
+            CreateBaseAsset<BoolField>(menuCommand, "Prefabs/default_BoolField", "BoolField");
+        }
+
+        [MenuItem("GameObject/UI/DGTools/Forms/Base String Field", false, 10)]
+        static void CreateBaseStringField(MenuCommand menuCommand)
+        {
+            CreateBaseAsset<StringField>(menuCommand, "Prefabs/default_StringField", "StringField");
+        }
+
+        [MenuItem("GameObject/UI/DGTools/Forms/Base Text Field", false, 10)]
+        static void CreateBaseTextField(MenuCommand menuCommand)
+        {
+            CreateBaseAsset<TextField>(menuCommand, "Prefabs/default_TextField", "TextField");
+        }
+
+        static void CreateBaseAsset<Tasset>(MenuCommand menuCommand, string path, string defaultName = null) where Tasset : MonoBehaviour {
+            Tasset asset = Instantiate(Resources.Load<Tasset>(path));
+            if (!string.IsNullOrEmpty(defaultName))
+            {
+                asset.name = defaultName;
+            }
+            else {
+                asset.name = asset.name.Replace("(Clone)", "");
+            }
+            GameObjectUtility.SetParentAndAlign(asset.gameObject, menuCommand.context as GameObject);
+            Undo.RegisterCreatedObjectUndo(asset.gameObject, "Create " + asset.name);
+            Selection.activeObject = asset;
         }
 
         private void OnValidate()

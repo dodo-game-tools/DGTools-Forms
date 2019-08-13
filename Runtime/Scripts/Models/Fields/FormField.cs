@@ -81,11 +81,24 @@ namespace DGTools.Forms
     /// <typeparam name="Tattribute">The type of the linked attribute</typeparam>
     public abstract class FormField<Tvalue, Tattribute> : FormField where Tattribute : FormFieldAttribute
     {
+        #region Private Variables
+        Tvalue _value;
+        #endregion
+
         #region Properties
         /// <summary>
         /// The casted value from <see cref="FormField"/>
         /// </summary>
-        public new Tvalue value { get; protected set; }
+        public new Tvalue value {
+            get { return _value; }
+            protected set {
+                _value = value;
+
+                if (attribute.runtimeCheck) {
+                    CheckValue();
+                }
+            }
+        }
 
         /// <summary>
         /// The linked <see cref="FormFieldAttribute"/>
@@ -139,7 +152,13 @@ namespace DGTools.Forms
         /// <param name="item"></param>
         public override void Bind(object item)
         {
-            fieldInfo.SetValue(item, value);
+            try
+            {
+                fieldInfo.SetValue(item, value);
+            }
+            catch {
+                throw new Exception(string.Format("Failed to bind value {0}({1}) to {2}({3}), check your fields or override the Bind method in your custom field if you need a custom binding", value, typeof(Tvalue), fieldInfo.Name, fieldInfo.FieldType));
+            }
         }
         #endregion
 
@@ -150,7 +169,13 @@ namespace DGTools.Forms
         /// <param name="objectToCast">The object to cast</param>
         /// <returns>The casted value</returns>
         protected virtual Tvalue CastObjectToValue(object objectToCast) {
-            return (Tvalue)objectToCast;
+            try
+            {
+                return (Tvalue)objectToCast;
+            }
+            catch {
+                throw new Exception(string.Format("Failed to automatically cast object to {0}, you'll have to add your own CastObjectToValue implementation in your custom field", typeof(Tvalue)));
+            }
         }
         #endregion
 
